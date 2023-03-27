@@ -32,3 +32,5 @@ Province.create(name: "Yukon", code: "YT", taxes: 0.05)
 #   category = Category.find_or_create_by(name: p["Category"])
 #   product = Product.find_or_create_by(name: p["Product.Name"])
 # end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
