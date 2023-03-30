@@ -76,3 +76,5 @@ gem 'devise'
 gem 'sassc'
 
 gem 'bulma-rails'
+
+gem 'kaminari'

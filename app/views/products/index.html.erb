@@ -1,5 +1,12 @@
 
 
-<% @products.each do |product| %>
-  <%= render partial: 'product', object: product, locals: {show_link: false} %>
-<% end %>
+
+<div class="columns is-multiline">
+  <% @products.each do |product| %>
+    <%= render partial: 'product', object: product, locals: {show_link: false} %>
+  <% end %>
+</div>
+
+<div class="block is-align-items-center" style="width: 10%">
+  <%= paginate @products %>
+</div>
