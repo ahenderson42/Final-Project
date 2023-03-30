@@ -1,0 +1,25 @@
+<div class= "column">
+  <div class="card" style="width: 20%">
+    <div class="card-content">
+      <p class="title">
+        <%= product.name %>
+      </p>
+      <p class="subtitle">
+        $<%= product.price %>
+      </p>
+      <p>
+        <%= product.company.name %>
+      </p>
+      <% if product.image.present? %>
+        <div class="card-image">
+          <figure class="image">
+            <%= image_tag product.image, style: 'height: 200px; width: 200px' %>
+          </figure>
+        </div>
+      <% end %>
+
+
+    </div>
+  </div>
+
+</div>
