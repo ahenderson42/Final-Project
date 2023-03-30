@@ -1,0 +1,7 @@
+<%= link_to "Home", products_index_path %>
+
+<div class="columns is-multiline">
+  <% @category.products.each do |product| %>
+    <%= render partial: 'products/product', object: product %>
+  <% end %>
+</div>

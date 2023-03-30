@@ -1,9 +1,9 @@
 
-
+<%= link_to "Categories", categories_index_path %>
 
 <div class="columns is-multiline">
   <% @products.each do |product| %>
-    <%= render partial: 'product', object: product, locals: {show_link: false} %>
+    <%= render partial: 'product', object: product %>
   <% end %>
 </div>
 
