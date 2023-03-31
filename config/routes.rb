@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get 'products/index'
   # get 'products/show'
-  # get 'products/search'
+  get 'products/search'
   resources :products, only: %i[index show search]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: "products#index"
