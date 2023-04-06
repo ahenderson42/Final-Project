@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_06_180622) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_06_214127) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -118,24 +118,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_06_180622) do
 
   create_table "shoppers", force: :cascade do |t|
     t.string "full_name"
-    t.string "email"
     t.string "phone_number"
     t.string "username"
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "full_name"
-    t.string "email"
-    t.string "phone_number"
-    t.string "username"
-    t.string "password"
-    t.integer "province_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["province_id"], name: "index_users_on_province_id"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_shoppers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_shoppers_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -145,5 +139,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_06_180622) do
   add_foreign_key "product_orders", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "companies"
-  add_foreign_key "users", "provinces"
 end

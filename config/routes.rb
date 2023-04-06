@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :shoppers
   get 'categories/index'
   get 'categories/show'
   resources :categories, only: %i[index show]
