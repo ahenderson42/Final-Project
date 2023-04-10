@@ -11,8 +11,9 @@
       <%= link_to "Categories", categories_index_path, class: "navbar-item" %>
       <% if shopper_signed_in? %>
         <div class="navbar-item"> Welcome <%= current_shopper.email %> </div>
-          <%= button_to "Sign out", destroy_shopper_session_path, method: :delete, class: "navbar-item" %>
-        <% else %>
+        <%= button_to "Sign out", destroy_shopper_session_path, method: :delete, class: "navbar-item" %>
+        <%= link_to "Edit Account", edit_shopper_registration_path, class: "navbar-item" %>
+      <% else %>
           <%= link_to "Sign in", new_shopper_session_path, class: "navbar-item" %>
       <% end %>
 
