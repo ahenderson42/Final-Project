@@ -19,6 +19,10 @@
       <p>
         <%= product.company.name %>
       </p>
+      <%= form_with url: cart_index_path, method: :post do %>
+        <%= hidden_field_tag(:id, product.id)%>
+        <%= button_tag 'Add to Cart 🛒' %>
+      <% end %>
 
 
 

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'cart/create'
-  get 'cart/destroy'
+
   devise_for :shoppers
   get 'categories/index'
   get 'categories/show'
   resources :categories, only: %i[index show]
+  resources :cart, only: %i[create destroy]
   get 'pages/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
