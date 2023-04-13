@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cart/create'
+  get 'cart/destroy'
   devise_for :shoppers
   get 'categories/index'
   get 'categories/show'

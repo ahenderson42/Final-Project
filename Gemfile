@@ -78,3 +78,5 @@ gem 'sassc'
 gem 'bulma-rails'
 
 gem 'kaminari'
+
+gem 'stripe'
