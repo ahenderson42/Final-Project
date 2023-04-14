@@ -2,6 +2,10 @@
 
 <%= form_with(url: checkout_invoice_path, local: true, method: "get", class: 'mt-5 mb-5') do %>
   <div class="control">
+    <%= label_tag 'full_name', "Enter your full name:" %>
+    <%= text_field_tag 'full_name' %>
+  </div>
+  <div class="control">
     <%= label_tag 'address', 'Enter your address:' %>
     <%= text_field_tag 'address' %>
   </div>
