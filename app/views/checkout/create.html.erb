@@ -1,0 +1,11 @@
+
+
+<% customer = Customer.find_or_create_by(full_name: params[:full_name], address: params[:address]) %>
+
+<% if customer && customer.valid? %>
+  <% order = customer.orders.create(total_price: params[:total_cost]) %>
+
+  <% if order.valid? %>
+    <h2>Order Successfully placed!</h2>
+  <% end %>
+<% end %>

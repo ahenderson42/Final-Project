@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_06_214127) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_14_150242) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -77,23 +77,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_06_214127) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.float "total_price"
+  create_table "customers", force: :cascade do |t|
+    t.string "full_name"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "users_id"
-    t.index ["users_id"], name: "index_orders_on_users_id"
   end
 
-  create_table "product_orders", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "amount"
-    t.float "sum_price"
-    t.integer "order_id", null: false
+  create_table "orders", force: :cascade do |t|
+    t.float "total_price"
+    t.integer "customer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_product_orders_on_order_id"
-    t.index ["product_id"], name: "index_product_orders_on_product_id"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -128,15 +124,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_06_214127) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "province_id"
     t.index ["email"], name: "index_shoppers_on_email", unique: true
+    t.index ["province_id"], name: "index_shoppers_on_province_id"
     t.index ["reset_password_token"], name: "index_shoppers_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "orders", "users", column: "users_id"
-  add_foreign_key "product_orders", "orders"
-  add_foreign_key "product_orders", "products"
+  add_foreign_key "orders", "customers"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "companies"
+  add_foreign_key "shoppers", "provinces"
 end

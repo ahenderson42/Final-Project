@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'products/search'
   get 'checkout/info', to: 'checkout#info'
   get 'checkout/invoice', to: 'checkout#invoice'
+  post 'checkout/create', to: 'checkout#create'
   resources :products, only: %i[index show search]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: "products#index"

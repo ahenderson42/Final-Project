@@ -8,4 +8,8 @@ class CheckoutController < ApplicationController
   def info
 
   end
+
+  def create
+
+  end
 end

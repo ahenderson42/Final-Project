@@ -2,8 +2,8 @@
 
 one:
   total_price: 1.5
-  shopper: one
+  customer: one
 
 two:
   total_price: 1.5
-  shopper: two
+  customer: two
