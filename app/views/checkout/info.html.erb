@@ -1,0 +1,15 @@
+
+
+<%= form_with(url: checkout_invoice_path, local: true, method: "get", class: 'mt-5 mb-5') do %>
+  <div class="control">
+    <%= label_tag 'address', 'Enter your address:' %>
+    <%= text_field_tag 'address' %>
+  </div>
+  <div class="control">
+    <%= label_tag 'province', 'Select your province:' %>
+    <%= select_tag 'province', options_for_select(Province.all.map{|el| [el.name, el.id]}), { prompt: "Select Province", class: "form-control" } %>
+  </div>
+  <div class="control">
+    <%= submit_tag "Submit" %>
+  </div>
+<% end %>

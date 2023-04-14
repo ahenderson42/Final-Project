@@ -1,0 +1,26 @@
+
+<% sum = 0 %>
+
+<% cart.each do |product| %>
+<div class="content">
+  <ul>
+    <li>
+      <p><%= product.name %> -- $<%= product.price %></p>
+      <% sum += product.price %>
+    </li>
+  </ul>
+</div>
+<% end %>
+
+<% taxes = sum * @province.taxes %>
+<% total = sum + taxes %>
+
+<p class="has-text-weight-semibold">Subtotal: $<%= sum.round(2) %></p>
+<p class="has-text-weight-semibold">Taxes: $<%= taxes.round(2) %></p>
+<p class="has-text-weight-semibold">Total: $<%= total.round(2) %></p>
+
+<%= form_with url: cart_index_path, method: :post do %>
+  <%= hidden_field_tag(:address, params[:address]) %>
+  <%= hidden_field_tag(:total_cost, total) %>
+  <%= button_tag 'Place order' %>
+<% end %>

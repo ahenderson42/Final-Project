@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'products/index'
   # get 'products/show'
   get 'products/search'
+  get 'checkout/info', to: 'checkout#info'
+  get 'checkout/invoice', to: 'checkout#invoice'
   resources :products, only: %i[index show search]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: "products#index"
