@@ -4,7 +4,8 @@ class Product < ApplicationRecord
 
   has_many :product_orders
 
-  validates :name, presence: true
+  validates :name, :price, :location, presence: true
+
 
   has_one_attached :image
 
