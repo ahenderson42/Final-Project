@@ -1,0 +1,6 @@
+
+<div class="columns is-multiline">
+  <% @products.each do |product| %>
+    <%= render partial: 'product', object: product %>
+  <% end %>
+</div>

@@ -9,6 +9,8 @@
     <div class="navbar-menu">
       <%= link_to "Home", products_index_path, class: "navbar-item" %>
       <%= link_to "Categories", categories_index_path, class: "navbar-item" %>
+      <%= link_to "New Products", new_product_path, class: "navbar-item" %>
+      <%= link_to "Updated Products", products_updated_path, class: "navbar-item" %>
       <% if shopper_signed_in? %>
         <div class="navbar-item"> Welcome <%= current_shopper.email %> </div>
           <%= button_to "Sign out", destroy_shopper_session_path, method: :delete, class: "navbar-item" %>

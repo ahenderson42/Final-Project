@@ -10,4 +10,12 @@ class ProductsController < ApplicationController
   def search
     @products = Product.search(params[:search], params[:category])
   end
+
+  def new
+    @products = Product.where("created_at >= ?", 3.days.ago)
+  end
+
+  def updated
+    @products = Product.where("created_at <= ? AND updated_at >= ?", 3.days.ago, 3.days.ago)
+  end
 end
