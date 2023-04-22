@@ -2,10 +2,17 @@
 
 <% customer = Customer.find_or_create_by(full_name: params[:full_name], address: params[:address]) %>
 
+
 <% if customer && customer.valid? %>
-  <% order = customer.orders.create(total_price: params[:total_cost]) %>
+  <% order = customer.orders.create(total_price: params[:total_cost].to_f.round(2)) %>
 
   <% if order.valid? %>
-    <h2>Order Successfully placed!</h2>
+    const stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>');
+
+    stripe.redirectToCheckout({
+      sessionId: '<%= @session.id %>'
+    }).then(function(result){
+      console.log(result.error.message);
+    })
   <% end %>
 <% end %>

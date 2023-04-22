@@ -1,6 +1,12 @@
 
 
-<%= form_with(url: checkout_invoice_path, local: true, method: "get", class: 'mt-5 mb-5') do %>
+<% sum = 0 %>
+
+<% cart.each do |product| %>
+  <% sum += product.price %>
+<% end %>
+
+<%= form_with(url: checkout_create_path, local: true, method: "post", class: 'mt-5 mb-5') do %>
   <div class="control">
     <%= label_tag 'full_name', "Enter your full name:" %>
     <%= text_field_tag 'full_name' %>
@@ -13,6 +19,7 @@
     <%= label_tag 'province', 'Select your province:' %>
     <%= select_tag 'province', options_for_select(Province.all.map{|el| [el.name, el.id]}), { prompt: "Select Province", class: "form-control" } %>
   </div>
+  <%= hidden_field_tag(:total_cost, sum) %>
   <div class="control">
     <%= submit_tag "Submit" %>
   </div>

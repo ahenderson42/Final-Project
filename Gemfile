@@ -80,3 +80,4 @@ gem 'bulma-rails'
 gem 'kaminari'
 
 gem 'stripe'
+gem 'pay'
