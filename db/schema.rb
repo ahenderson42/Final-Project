@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_20_140856) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_22_010934) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -111,6 +111,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_20_140856) do
     t.float "taxes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "pst", default: 0.0
+    t.float "gst", default: 0.0
+    t.float "hst", default: 0.0
   end
 
   create_table "shoppers", force: :cascade do |t|

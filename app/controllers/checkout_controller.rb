@@ -17,7 +17,7 @@ class CheckoutController < ApplicationController
       payment_method_types: ["card"],
       success_url: checkout_success_url + "?session_id={CHECKOUT_SESSION_ID}",
       cancel_url: checkout_cancel_url,
-      line_items: [
+      line_items: [{
         price_data: {
           currency: "cad",
           unit_amount: params[:total_cost].to_i * 100,
@@ -26,6 +26,27 @@ class CheckoutController < ApplicationController
           },
         },
         quantity: 1
+      },
+        taxes={
+          gst: {
+            name: 'GST',
+            unit_price: (params[:total_cost].to_i * 100) * @province.gst,
+            currency: 'cad',
+            quantity: 1
+          },
+          pst: {
+            name: 'PST',
+            unit_price: (params[:total_cost].to_i * 100) * @province.pst,
+            currency: 'cad',
+            quantity: 1
+          },
+          hst: {
+            name: 'HST',
+            unit_price: (params[:total_cost].to_i * 100) * @province.hst,
+            currency: 'cad',
+            quantity: 1
+          }
+        }
       ],
       mode: 'payment'
     )
