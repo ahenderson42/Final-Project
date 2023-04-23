@@ -1,19 +1,19 @@
 
 
 <%= form_with(url: checkout_invoice_path, local: true, method: "get", class: 'mt-5 mb-5') do %>
-  <div class="control">
-    <%= label_tag 'full_name', "Enter your full name:" %>
-    <%= text_field_tag 'full_name' %>
+  <div class="field" style="width: 25%">
+    <%= label_tag 'full_name', "Enter your full name:", class: "label" %>
+    <%= text_field_tag 'full_name', "", class: "input is-rounded" %>
+  </div>
+  <div class="field" style="width: 25%">
+    <%= label_tag 'address', 'Enter your address:', class: "label" %>
+    <%= text_field_tag 'address', "", class: "input is-rounded" %>
+  </div>
+  <div class="field">
+    <%= label_tag 'province', 'Select your province:', class: "label" %>
+    <%= select_tag 'province', options_for_select(Province.all.map{|el| [el.name, el.id]}), { prompt: "Select Province", class: "select is-rounded" } %>
   </div>
   <div class="control">
-    <%= label_tag 'address', 'Enter your address:' %>
-    <%= text_field_tag 'address' %>
-  </div>
-  <div class="control">
-    <%= label_tag 'province', 'Select your province:' %>
-    <%= select_tag 'province', options_for_select(Province.all.map{|el| [el.name, el.id]}), { prompt: "Select Province", class: "form-control" } %>
-  </div>
-  <div class="control">
-    <%= submit_tag "Submit" %>
+    <%= submit_tag "Submit", class: "button is-link" %>
   </div>
 <% end %>

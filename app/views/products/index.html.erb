@@ -1,6 +1,6 @@
 
 <% if cart.present? %>
-  <div class="content">
+  <div class="content is-medium">
     <h3 class="title is-5 is-spaced">Cart</h3>
     <ul>
       <% cart.each do |product| %>
@@ -9,7 +9,7 @@
         </li>
       <% end %>
     </ul>
-    <%= link_to "Place Order", checkout_info_path %>
+    <%= link_to "Place Order", checkout_info_path, class: "button is-link" %>
   </div>
 <% end %>
 
