@@ -1,4 +1,11 @@
 
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><%= link_to "Home", products_index_path %></li>
+    <li><%= link_to "Categories", categories_index_path %></li>
+    <li class="is-active"><%= link_to @category.name, @category %></li>
+  </ul>
+</nav>
 
 <div class="columns is-multiline">
   <% @category.products.each do |product| %>

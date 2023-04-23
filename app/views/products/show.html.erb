@@ -1,4 +1,12 @@
 
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><%= link_to "Home", products_index_path %></li>
+    <li><%= link_to "Categories", categories_index_path %></li>
+    <li><%= link_to @product.category.name, @product.category %></li>
+    <li class="is-active"><%= link_to @product.name, @product %></li>
+  </ul>
+</nav>
 
 <div class="columns">
   <div class="column is-one-third">
