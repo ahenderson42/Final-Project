@@ -22,6 +22,6 @@
 <%= form_with url: checkout_create_path, method: :post do %>
   <%= hidden_field_tag(:full_name, params[:full_name]) %>
   <%= hidden_field_tag(:address, params[:address]) %>
-  <%= hidden_field_tag(:total_cost, total) %>
+  <%= hidden_field_tag(:total_cost, total.to_f.round(2)) %>
   <%= button_tag 'Place order', class: "button is-link" %>
 <% end %>
