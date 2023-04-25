@@ -3,7 +3,10 @@ class Product < ApplicationRecord
   belongs_to :company
 
 
-  validates :name, :price, :location, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :price, presence: true, numericality: { only_float: true }
+  validates :location, presence: true, format: { with: /\A[a-zA-Z]+\z/,
+    message: "only allows letters" }
 
 
   has_one_attached :image

@@ -3,5 +3,9 @@ class Shopper < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :orders
+
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP,
+    message: "must be a valid email address" }
+  validates :encrypted_password, presence: true
+
 end
